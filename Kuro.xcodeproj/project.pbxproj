@@ -13,7 +13,6 @@
 		BC1D3B61256834A50059A369 /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1D3B5F256834A50059A369 /* DescriptionTableViewCell.xib */; };
 		BC1D3B81256AC7850059A369 /* AniList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D3B80256AC7850059A369 /* AniList.swift */; };
 		BC2991A5255373E900160258 /* AnimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2991A4255373E900160258 /* AnimeTableViewCell.swift */; };
-		BC554609255086F000C457A9 /* queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC554608255086F000C457A9 /* queries.swift */; };
 		BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */; };
 		BC5546222550D76500C457A9 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546212550D76500C457A9 /* SearchTableViewController.swift */; };
 		BC99CEDE254BD2B400BFB1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */; };
@@ -60,7 +59,6 @@
 		BC1D3B5F256834A50059A369 /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		BC1D3B80256AC7850059A369 /* AniList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniList.swift; sourceTree = "<group>"; };
 		BC2991A4255373E900160258 /* AnimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewCell.swift; sourceTree = "<group>"; };
-		BC554608255086F000C457A9 /* queries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = queries.swift; sourceTree = "<group>"; };
 		BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		BC5546212550D76500C457A9 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		BC99CEDA254BD2B400BFB1D9 /* Kuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +204,6 @@
 				BC99CEEB254BD2B500BFB1D9 /* LaunchScreen.storyboard */,
 				BC99CEEE254BD2B500BFB1D9 /* Info.plist */,
 				BC99CEE6254BD2B400BFB1D9 /* Kuro.xcdatamodeld */,
-				BC554608255086F000C457A9 /* queries.swift */,
 			);
 			path = Kuro;
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 				BC99CEE8254BD2B400BFB1D9 /* Kuro.xcdatamodeld in Sources */,
 				BCFE441925676C6A00448B36 /* ImageCollectionViewCell.swift in Sources */,
 				BC99CF3E254E4EC100BFB1D9 /* CategoryTableViewController.swift in Sources */,
-				BC554609255086F000C457A9 /* queries.swift in Sources */,
 				BCFE440D2567695400448B36 /* UIViewHelper.swift in Sources */,
 				BC99CEE0254BD2B400BFB1D9 /* SceneDelegate.swift in Sources */,
 				BC1D3B55256833840059A369 /* ImageTableViewCell.swift in Sources */,
