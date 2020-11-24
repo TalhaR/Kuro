@@ -13,6 +13,50 @@ public struct AniList: Decodable {
     let coverImage: [String : URL]
 }
 
+public struct DetailedAniList : Decodable {
+    let genres: [String]
+    let averageScore: Int?
+    let coverImage: [String : URL]
+    let episodes: Int?
+    let id: Int
+    let nextAiringEpisode: [String : Int]?
+    let rankings: [[String : JsonGeneric?]]
+    let season: String?
+    let seasonYear: Int?
+    let title: [String : String?]
+    let description: String
+    let status: String
+    
+    // type: "RATED" or "POPULAR"
+    func getRank(_ type: String) -> String? {
+        var season: String?
+        var year = 0, rank = 0
+        
+        for ranking in rankings {
+            if ranking["type"]??.stringValue != type {
+                continue
+            }
+            if ranking["allTime"]??.boolValue == true {
+                return "#\(ranking["rank"]!!.intValue!) All Time"
+            }
+            
+            if year < (ranking["year"]??.intValue)! {
+                year = (ranking["year"]!!.intValue)!
+                season = ranking["season"]??.stringValue
+                rank = (ranking["rank"]??.intValue)!
+            }
+        }
+        
+        if let season = season {
+            return "#\(rank) \(season) \(year)"
+        }
+        if year != 0 {
+            return "#\(rank) \(year)"
+        }
+        return nil
+    }
+}
+
 public enum JsonGeneric: Decodable {
     case int(Int), string(String), bool(Bool)
     

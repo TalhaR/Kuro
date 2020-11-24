@@ -60,9 +60,9 @@ class BrowseTableViewController: UITableViewController {
         case 1, 2: // Popularity or Highest Rated
             let tmpController = storyboard!.instantiateViewController(withIdentifier: "AnimeViewController") as! AnimeViewController
             if indexPath.row == 1 {
-                tmpController.query_variables.updateValue("POPULARITY_DESC", forKey: "sort")
+                tmpController.queryVariables.updateValue("POPULARITY_DESC", forKey: "sort")
             } else {
-                tmpController.query_variables.updateValue("SCORE_DESC", forKey: "sort")
+                tmpController.queryVariables.updateValue("SCORE_DESC", forKey: "sort")
             }
             controller = tmpController
         default:

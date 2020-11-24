@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let cellSize = CGSize(width: 202, height: 295)
+private let cellSize = CGSize(width: 190, height: 285)
 
 private var post_query = """
         query ($id: Int, $page: Int, $perPage: Int, $sort: [MediaSort], $genre: String, $type: MediaType, $season: MediaSeason, $seasonYear: Int, $isAdult: Boolean, $popularity_greater: Int) {
@@ -27,9 +27,9 @@ private var post_query = """
         """
 
 class AnimeViewController: UIViewController {
-    var anime_list: [AniList] = []
+    var animeList: [AniList] = []
     
-    var query_variables: [String: Any] = [
+    var queryVariables: [String: Any] = [
         "page": 1,
         "perPage": 50,
         "type": "ANIME",
@@ -60,11 +60,11 @@ class AnimeViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.stretchViewBoundsByAddingConstraints(ofParent: view)
         // for debugging
-//        print(query_variables)
+//        print(queryVariables)
     }
     
     func apiQuery() {
-        let parameterDic: [String : Any] = ["query" : post_query, "variables" : query_variables]
+        let parameterDic: [String : Any] = ["query" : post_query, "variables" : queryVariables]
 
         let url = URL(string: "https://graphql.anilist.co")
         var request = URLRequest(url: url!)
@@ -80,7 +80,7 @@ class AnimeViewController: UIViewController {
                     for show in json["data"]!["Page"]!["media"]! {
                         let jsonData = try JSONSerialization.data(withJSONObject: show, options: .prettyPrinted)
                         let anime_info: AniList = try! JSONDecoder().decode(AniList.self, from: jsonData)
-                        self.anime_list.append(anime_info)
+                        self.animeList.append(anime_info)
                     }
 
                     DispatchQueue.main.async {
@@ -97,19 +97,18 @@ class AnimeViewController: UIViewController {
 
 // MARK: - CollectionView Delegate
 extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return anime_list.count
+        return animeList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as! ImageCollectionViewCell
         
-        if (!anime_list.isEmpty) {
-            let anime_info = anime_list[indexPath.row]
-            cell.tag = anime_info.id
+        if (!animeList.isEmpty) {
+            let animeInfo = animeList[indexPath.row]
+            cell.tag = animeInfo.id
             
-            let data = try! Data(contentsOf: anime_info.coverImage["large"]!)
+            let data = try! Data(contentsOf: animeInfo.coverImage["large"]!)
             let img = UIImage(data: data)
             cell.imageView.image = img
         } else {
@@ -124,20 +123,24 @@ extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let controller = storyboard!.instantiateViewController(withIdentifier: "AnimeInfoTableViewController") as! AnimeInfoTableViewController
         
-        if let title = anime_list[indexPath.row].title["english"]! {
+        if let title = animeList[indexPath.row].title["english"]! {
             controller.title = title
         } else {
-            controller.title = anime_list[indexPath.row].title["romaji"]!
+            controller.title = animeList[indexPath.row].title["romaji"]!
         }
 
         let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
         controller.tmpImg = cell.imageView.image
-        controller.query_variables.updateValue(cell.tag, forKey: "id")
+        controller.queryVariables.updateValue(cell.tag, forKey: "id")
         
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }

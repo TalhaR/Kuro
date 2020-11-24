@@ -10,7 +10,7 @@ import UIKit
 class DescriptionTableViewCell: UITableViewCell {
     static let identifier = "descriptionTableViewCell"
 
-    @IBOutlet var animeDescription: UILabel!
+    @IBOutlet weak var animeDescription: UILabel!
 
     static func nib() -> UINib {
         return UINib(nibName: "DescriptionTableViewCell", bundle: nil)

@@ -9,20 +9,42 @@ import UIKit
 
 class TagsTableViewCell: UITableViewCell {
     static let identifier = "tagsTableViewCell"
-    @IBOutlet var collectionView: UICollectionView!
-    
     var genres: [String] = []
 
     static func nib() -> UINib {
         return UINib(nibName: "TagsTableViewCell", bundle: nil)
     }
     
+    let collectionView: UICollectionView = {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 2.5, bottom: 0, trailing: 2.5)
+
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+//        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .horizontal
+        let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
+        
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(TagCollectionViewCell.nib(), forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        
+        return collectionView
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        collectionView.register(TagCollectionViewCell.nib(), forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+        contentView.addSubview(collectionView)
+        collectionView.stretchViewBoundsByAddingConstraints(ofParent: contentView, withHorizontalOffset: 5, withVertical: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,7 +55,6 @@ class TagsTableViewCell: UITableViewCell {
         self.genres = genres
         collectionView.reloadData()
     }
-    
 }
 
     // MARK: - Collection View Delgates
@@ -51,8 +72,8 @@ extension TagsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 30)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 30)
+//    }
 
 }

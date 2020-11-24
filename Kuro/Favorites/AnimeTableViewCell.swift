@@ -11,7 +11,7 @@ class AnimeTableViewCell: UITableViewCell {
     @IBOutlet weak var animeImage: UIImageView!
     @IBOutlet weak var animeName: UILabel!
     @IBOutlet weak var animeScore: UILabel!
-    @IBOutlet weak var animeSeason: UILabel!
+    @IBOutlet weak var animeType: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

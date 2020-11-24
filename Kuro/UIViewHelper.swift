@@ -21,5 +21,12 @@ extension UIView {
         self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: offset).isActive = true
         self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -offset).isActive = true
     }
+    
+    func stretchViewBoundsByAddingConstraints(ofParent parent: UIView, withHorizontalOffset horizontal: CGFloat, withVertical vertical: CGFloat) {
+        self.topAnchor.constraint(equalTo: parent.topAnchor, constant: vertical).isActive = true
+        self.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -vertical).isActive = true
+        self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: horizontal).isActive = true
+        self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -horizontal).isActive = true
+    }
 
 }

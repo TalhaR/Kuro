@@ -76,17 +76,18 @@ class CategoryTableViewController: UITableViewController {
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.title = categories[indexPath.row]
-                controller.query_variables.updateValue("POPULARITY_DESC", forKey: "sort")
+                controller.queryVariables.updateValue("POPULARITY_DESC", forKey: "sort")
+                controller.queryVariables.updateValue(100, forKey: "popularity_greater")
                 
                 switch title {
                 case "Genre":
-                    controller.query_variables.updateValue(categories[indexPath.row], forKey: "genre")
+                    controller.queryVariables.updateValue(categories[indexPath.row], forKey: "genre")
                 case "Season":
                     let seasonArr = categories[indexPath.row].components(separatedBy: " ")
-                    controller.query_variables.updateValue(seasonArr[0].uppercased(), forKey: "season")
-                    controller.query_variables.updateValue(seasonArr[1], forKey: "seasonYear")
+                    controller.queryVariables.updateValue(seasonArr[0].uppercased(), forKey: "season")
+                    controller.queryVariables.updateValue(seasonArr[1], forKey: "seasonYear")
                 case "Year":
-                    controller.query_variables.updateValue(categories[indexPath.row], forKey: "seasonYear")
+                    controller.queryVariables.updateValue(categories[indexPath.row], forKey: "seasonYear")
                 default:
                     print("Error: Unexpected issue with segue")
                 }
