@@ -1,1 +1,2 @@
 # Kuro
+Uses AniList API
