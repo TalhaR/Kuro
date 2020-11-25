@@ -8,17 +8,14 @@
 import UIKit
 import Foundation
 import AVFoundation
+import CoreData
 
 private var postQuery = """
         query ($id: Int) {
               Media (id: $id) {
                   averageScore
-                  coverImage {
-                      large
-                  }
                   genres
                   episodes
-                  id
                   season
                   seasonYear
                   title {
@@ -30,8 +27,6 @@ private var postQuery = """
                         rank
                         type
                         allTime
-                        format
-                        context
                         season
                         year
                   }
@@ -39,6 +34,7 @@ private var postQuery = """
                         episode
                   }
                   status
+                  format
               }
           }
         """
@@ -47,16 +43,33 @@ class AnimeInfoTableViewController: UITableViewController {
     var tmpImg: UIImage?
     var animeInfo: DetailedAniList?
     var desc: NSAttributedString?
-    
-    var queryVariables: [String: Any] = [
+    var savedAnime: Anime?
+    var queryVariables: [String: Int] = [
         "id" : 1
     ]
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         apiQuery()
         
-        let favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(self.favorite))
+        do {
+            let animeList: [Anime] = try context.fetch(Anime.fetchRequest())
+            
+            for anime in animeList {
+                let id = queryVariables["id"]
+                if anime.id == id!{
+                    savedAnime = anime
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        let symbol: String = savedAnime != nil ? "star.fill" : "star"
+        
+        let favoriteButton = UIBarButtonItem(image: UIImage(systemName: symbol), style: .plain, target: self, action: #selector(self.favorite))
         self.navigationItem.rightBarButtonItem = favoriteButton
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -66,9 +79,36 @@ class AnimeInfoTableViewController: UITableViewController {
     }
     
     @objc func favorite() {
-        self.navigationItem.rightBarButtonItem!.image = UIImage(systemName: "star.fill")
+        let symbol: String = savedAnime != nil ? "star" : "star.fill"
+        self.navigationItem.rightBarButtonItem!.image = UIImage(systemName: symbol)
         print("test")
         AudioServicesPlaySystemSound(SystemSoundID(1111)) // 1054 bell / 1111 confirm noise?
+        
+        if let savedAnime = savedAnime {
+            self.context.delete(savedAnime)
+        } else {
+            let anime = Anime(context: self.context)
+            anime.name = title
+            
+            if let animeInfo = animeInfo {
+                anime.id = Int32(queryVariables["id"]!)
+                
+                if let score = animeInfo.averageScore {
+                    anime.score = Int16(score)
+                }
+                anime.type = animeInfo.format
+            }
+            
+            if let imageData = tmpImg?.pngData() {
+                anime.image = imageData
+            }
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func apiQuery() {
@@ -84,6 +124,7 @@ class AnimeInfoTableViewController: UITableViewController {
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : [String : Any]]
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
                     let show = json["data"]!["Media"]!
 //                    print(show)
                     let jsonData = try JSONSerialization.data(withJSONObject: show, options: .prettyPrinted)
@@ -104,7 +145,9 @@ class AnimeInfoTableViewController: UITableViewController {
         }.resume()
     }
 
-    // MARK: - Table view data source
+}
+
+extension AnimeInfoTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -116,43 +159,46 @@ class AnimeInfoTableViewController: UITableViewController {
         case 0:
             let imageCell = tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.identifier, for: indexPath) as! ImageTableViewCell
             imageCell.configure(with: tmpImg!)
-            
-            if let anime_info = animeInfo {
-                switch anime_info.status {
+    
+            if let animeInfo = animeInfo {
+                switch animeInfo.status {
                 case "RELEASING":
                     imageCell.animeAiringStatusLabel.text = "Airing"
                     
-                    let nextEpisode = anime_info.nextAiringEpisode!
-                    if let totalEpisodes = anime_info.episodes {
+                    let nextEpisode = animeInfo.nextAiringEpisode!
+                    if let totalEpisodes = animeInfo.episodes {
                         imageCell.animeEpisodeLabel.text = "\(nextEpisode["episode"]! - 1) / \(totalEpisodes)"
                     } else {
                         imageCell.animeEpisodeLabel.text = "\(nextEpisode["episode"]! - 1) / ?"
                     }
                 case "FINISHED":
                     imageCell.animeAiringStatusLabel.text = "Completed"
-                    imageCell.animeEpisodeLabel.text = "\(anime_info.episodes!)"
+                    imageCell.animeEpisodeLabel.text = "\(animeInfo.episodes!)"
                 case "NOT_YET_RELEASED":
                     imageCell.animeAiringStatusLabel.text = "Unreleased"
                 default:
                     imageCell.animeAiringStatusLabel.text = "Cancelled"
                 }
                 
-                if anime_info.rankings.count > 0 {
-                    imageCell.animeFormatLabel.text = anime_info.rankings[0]["format"]??.stringValue
-                } else if anime_info.episodes! == 1 {
+                switch animeInfo.format {
+                case "TV_SHORT":
+                    imageCell.animeFormatLabel.text = "TV Short"
+                case "MOVIE":
                     imageCell.animeFormatLabel.text = "Movie"
+                default:
+                    imageCell.animeFormatLabel.text = animeInfo.format
                 }
                 
-                if let season = anime_info.season, let year = anime_info.seasonYear {
-                    imageCell.animeSeasonLabel.text = "\(season) \(year)"
+                if let season = animeInfo.season?.lowercased(), let year = animeInfo.seasonYear {
+                    imageCell.animeSeasonLabel.text = "\(season.capitalized) \(year)"
                 } else {
                     imageCell.animeSeasonLabel.text = "No Season \\ Year"
                 }
                 
-                imageCell.animeRatingLabel.text = anime_info.getRank("RATED")
-                imageCell.animePopularityLabel.text = anime_info.getRank("POPULAR")
+                imageCell.animeRatingLabel.text = animeInfo.getRank("RATED")
+                imageCell.animePopularityLabel.text = animeInfo.getRank("POPULAR")
                 
-                if let score = anime_info.averageScore {
+                if let score = animeInfo.averageScore {
                     imageCell.animeScoreLabel.text = String(score)
                 } else {
                     imageCell.animeScoreLabel.text = "-1" // make invis for release
@@ -182,11 +228,10 @@ class AnimeInfoTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == 1 {
-//            return 44.0
-//        }
-//        return UITableView.automaticDimension
-//    }
-    
+    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        if indexPath.row == 1 {
+    //            return 44.0
+    //        }
+    //        return UITableView.automaticDimension
+    //    }
 }

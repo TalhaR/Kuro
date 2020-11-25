@@ -16,9 +16,9 @@ public struct AniList: Decodable {
 public struct DetailedAniList : Decodable {
     let genres: [String]
     let averageScore: Int?
-    let coverImage: [String : URL]
+//    let coverImage: [String : URL]
     let episodes: Int?
-    let id: Int
+//    let id: Int
     let nextAiringEpisode: [String : Int]?
     let rankings: [[String : JsonGeneric?]]
     let season: String?
@@ -26,6 +26,7 @@ public struct DetailedAniList : Decodable {
     let title: [String : String?]
     let description: String
     let status: String
+    let format: String
     
     // type: "RATED" or "POPULAR"
     func getRank(_ type: String) -> String? {
@@ -47,8 +48,8 @@ public struct DetailedAniList : Decodable {
             }
         }
         
-        if let season = season {
-            return "#\(rank) \(season) \(year)"
+        if let season = season?.lowercased() {
+            return "#\(rank) \(season.capitalized) \(year)"
         }
         if year != 0 {
             return "#\(rank) \(year)"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteAnimeTableViewCell" rowHeight="191" id="KGk-i7-Jjw" customClass="FavoriteAnimeTableViewCell" customModule="Kuro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="191"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="191"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4YE-EF-glD">
+                        <rect key="frame" x="10" y="10" width="115" height="171"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anime Name Anime Name Anime Name Anime Name Anime Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-XS-tO6">
+                        <rect key="frame" x="135" y="10" width="265" height="81"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV Short" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku2-UL-P2i">
+                        <rect key="frame" x="135" y="149" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbl-hP-gIb">
+                        <rect key="frame" x="359" y="149" width="21" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="285" id="DCi-9b-8Mk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Tbl-hP-gIb" secondAttribute="bottom" constant="10" id="II8-FH-4sB"/>
+                    <constraint firstItem="4YE-EF-glD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="P58-r6-daX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ku2-UL-P2i" secondAttribute="bottom" constant="10" id="XzE-nR-7wl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Tbl-hP-gIb" secondAttribute="trailing" constant="10" id="a2v-FR-XgS"/>
+                    <constraint firstItem="j2h-XS-tO6" firstAttribute="leading" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="10" id="aZ5-Ws-acG"/>
+                    <constraint firstAttribute="bottom" secondItem="4YE-EF-glD" secondAttribute="bottom" constant="10" id="hQr-bg-bNV"/>
+                    <constraint firstAttribute="trailing" secondItem="j2h-XS-tO6" secondAttribute="trailing" constant="10" id="lhS-ei-1d9"/>
+                    <constraint firstItem="j2h-XS-tO6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="mDh-y8-l5G"/>
+                    <constraint firstAttribute="bottom" secondItem="j2h-XS-tO6" secondAttribute="bottom" constant="100" id="mRs-OL-yjw"/>
+                    <constraint firstItem="4YE-EF-glD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tej-dT-HX2"/>
+                    <constraint firstItem="ku2-UL-P2i" firstAttribute="leading" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="10" id="vYN-3A-bSK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="animeImage" destination="4YE-EF-glD" id="3pc-O3-bl7"/>
+                <outlet property="animeName" destination="j2h-XS-tO6" id="9yA-AC-sD0"/>
+                <outlet property="animeScore" destination="Tbl-hP-gIb" id="V2u-g5-qgf"/>
+                <outlet property="animeType" destination="ku2-UL-P2i" id="xOw-ph-Wwp"/>
+            </connections>
+            <point key="canvasLocation" x="85.507246376811594" y="67.96875"/>
+        </tableViewCell>
+    </objects>
+</document>

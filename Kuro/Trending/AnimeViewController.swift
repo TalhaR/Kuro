@@ -9,7 +9,7 @@ import UIKit
 
 private let cellSize = CGSize(width: 190, height: 285)
 
-private var post_query = """
+private var postQuery = """
         query ($id: Int, $page: Int, $perPage: Int, $sort: [MediaSort], $genre: String, $type: MediaType, $season: MediaSeason, $seasonYear: Int, $isAdult: Boolean, $popularity_greater: Int) {
             Page (page: $page, perPage: $perPage) {
                   media (id: $id, sort: $sort, genre: $genre, type: $type, season: $season, seasonYear: $seasonYear, isAdult: $isAdult, popularity_greater: $popularity_greater) {
@@ -39,11 +39,9 @@ class AnimeViewController: UIViewController {
     ]
     
     let collectionView: UICollectionView = {
-        // Setup CollectionView layout
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = cellSize
         
-        // Initialize CollectionView
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .darkGray
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +62,7 @@ class AnimeViewController: UIViewController {
     }
     
     func apiQuery() {
-        let parameterDic: [String : Any] = ["query" : post_query, "variables" : queryVariables]
+        let parameterDic: [String : Any] = ["query" : postQuery, "variables" : queryVariables]
 
         let url = URL(string: "https://graphql.anilist.co")
         var request = URLRequest(url: url!)

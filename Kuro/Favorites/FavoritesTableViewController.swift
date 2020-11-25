@@ -7,40 +7,78 @@
 
 import UIKit
 
-private let reuseIdentifier = "AnimeTableViewCell"
-
 class FavoritesTableViewController: UITableViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var animeList: [Anime]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        fetchAnime()
+        tableView.register(FavoriteAnimeTableViewCell.nib(), forCellReuseIdentifier: FavoriteAnimeTableViewCell.identifier)
+    }
+    
+    func fetchAnime() {
+        do {
+            self.animeList = try context.fetch(Anime.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            print("error")
+        }
     }
 
     // MARK: - Table view data source
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return animeList?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! AnimeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteAnimeTableViewCell.identifier, for: indexPath) as! FavoriteAnimeTableViewCell
 
-        // Configure the cell...
+        if let animeList = animeList {
+            let anime = animeList[indexPath.row]
+            cell.animeName.text = anime.name
+            cell.animeImage.image = UIImage(data: anime.image!)
+            cell.animeScore.text = String(anime.score)
+            cell.animeType.text = anime.type
+        }
 
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 132.0
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let controller = storyboard!.instantiateViewController(withIdentifier: "AnimeInfoTableViewController") as! AnimeInfoTableViewController
+        
+        let anime = animeList![indexPath.row]
+        
+        controller.title = anime.name
+        controller.tmpImg = UIImage(data: anime.image!)
+        controller.queryVariables.updateValue(Int(anime.id), forKey: "id")
+        
+        self.navigationController!.pushViewController(controller, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
+            let animeToRemove = self.animeList![indexPath.row]
+            
+            self.context.delete(animeToRemove)
+            
+            do {
+                try self.context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            self.fetchAnime()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
     }
 
     /*
@@ -77,11 +115,5 @@ class FavoritesTableViewController: UITableViewController {
         return true
     }
     */
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
 
 }

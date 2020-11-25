@@ -12,7 +12,8 @@
 		BC1D3B60256834A50059A369 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D3B5E256834A50059A369 /* DescriptionTableViewCell.swift */; };
 		BC1D3B61256834A50059A369 /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1D3B5F256834A50059A369 /* DescriptionTableViewCell.xib */; };
 		BC1D3B81256AC7850059A369 /* AniList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D3B80256AC7850059A369 /* AniList.swift */; };
-		BC2991A5255373E900160258 /* AnimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2991A4255373E900160258 /* AnimeTableViewCell.swift */; };
+		BC2CAAF2256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2CAAF0256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift */; };
+		BC2CAAF3256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2CAAF1256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib */; };
 		BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */; };
 		BC5546222550D76500C457A9 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546212550D76500C457A9 /* SearchTableViewController.swift */; };
 		BC99CEDE254BD2B400BFB1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */; };
@@ -21,8 +22,6 @@
 		BC99CEE8254BD2B400BFB1D9 /* Kuro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEE6254BD2B400BFB1D9 /* Kuro.xcdatamodeld */; };
 		BC99CEEA254BD2B500BFB1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC99CEE9254BD2B500BFB1D9 /* Assets.xcassets */; };
 		BC99CEED254BD2B500BFB1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC99CEEB254BD2B500BFB1D9 /* LaunchScreen.storyboard */; };
-		BC99CEF8254BD2B500BFB1D9 /* KuroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEF7254BD2B500BFB1D9 /* KuroTests.swift */; };
-		BC99CF03254BD2B500BFB1D9 /* KuroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CF02254BD2B500BFB1D9 /* KuroUITests.swift */; };
 		BC99CF36254E4CBA00BFB1D9 /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CF35254E4CBA00BFB1D9 /* BrowseTableViewController.swift */; };
 		BC99CF3E254E4EC100BFB1D9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CF3D254E4EC100BFB1D9 /* CategoryTableViewController.swift */; };
 		BCC7F447256778F1009D11DE /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7F446256778F1009D11DE /* AnimeViewController.swift */; };
@@ -58,7 +57,8 @@
 		BC1D3B5E256834A50059A369 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		BC1D3B5F256834A50059A369 /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		BC1D3B80256AC7850059A369 /* AniList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniList.swift; sourceTree = "<group>"; };
-		BC2991A4255373E900160258 /* AnimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewCell.swift; sourceTree = "<group>"; };
+		BC2CAAF0256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAnimeTableViewCell.swift; sourceTree = "<group>"; };
+		BC2CAAF1256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteAnimeTableViewCell.xib; sourceTree = "<group>"; };
 		BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		BC5546212550D76500C457A9 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		BC99CEDA254BD2B400BFB1D9 /* Kuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,11 +70,7 @@
 		BC99CEEC254BD2B500BFB1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC99CEEE254BD2B500BFB1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC99CEF3254BD2B500BFB1D9 /* KuroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC99CEF7254BD2B500BFB1D9 /* KuroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuroTests.swift; sourceTree = "<group>"; };
-		BC99CEF9254BD2B500BFB1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC99CEFE254BD2B500BFB1D9 /* KuroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC99CF02254BD2B500BFB1D9 /* KuroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuroUITests.swift; sourceTree = "<group>"; };
-		BC99CF04254BD2B500BFB1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC99CF35254E4CBA00BFB1D9 /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewController.swift; sourceTree = "<group>"; };
 		BC99CF3D254E4EC100BFB1D9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		BCC7F446256778F1009D11DE /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */,
-				BC2991A4255373E900160258 /* AnimeTableViewCell.swift */,
+				BC2CAAF0256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift */,
+				BC2CAAF1256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -171,8 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				BC99CEDC254BD2B400BFB1D9 /* Kuro */,
-				BC99CEF6254BD2B500BFB1D9 /* KuroTests */,
-				BC99CF01254BD2B500BFB1D9 /* KuroUITests */,
 				BC99CEDB254BD2B400BFB1D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -198,32 +193,14 @@
 				BC55461F2550D6D900C457A9 /* Browse */,
 				BC5546162550D6A000C457A9 /* Favorites */,
 				BC5546202550D74900C457A9 /* Search */,
+				BC99CEE6254BD2B400BFB1D9 /* Kuro.xcdatamodeld */,
 				BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */,
 				BC99CEDF254BD2B400BFB1D9 /* SceneDelegate.swift */,
+				BC99CEEE254BD2B500BFB1D9 /* Info.plist */,
 				BC99CEE9254BD2B500BFB1D9 /* Assets.xcassets */,
 				BC99CEEB254BD2B500BFB1D9 /* LaunchScreen.storyboard */,
-				BC99CEEE254BD2B500BFB1D9 /* Info.plist */,
-				BC99CEE6254BD2B400BFB1D9 /* Kuro.xcdatamodeld */,
 			);
 			path = Kuro;
-			sourceTree = "<group>";
-		};
-		BC99CEF6254BD2B500BFB1D9 /* KuroTests */ = {
-			isa = PBXGroup;
-			children = (
-				BC99CEF7254BD2B500BFB1D9 /* KuroTests.swift */,
-				BC99CEF9254BD2B500BFB1D9 /* Info.plist */,
-			);
-			path = KuroTests;
-			sourceTree = "<group>";
-		};
-		BC99CF01254BD2B500BFB1D9 /* KuroUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BC99CF02254BD2B500BFB1D9 /* KuroUITests.swift */,
-				BC99CF04254BD2B500BFB1D9 /* Info.plist */,
-			);
-			path = KuroUITests;
 			sourceTree = "<group>";
 		};
 		BC99CF29254E2B5100BFB1D9 /* Trending */ = {
@@ -361,6 +338,7 @@
 				BC99CEED254BD2B500BFB1D9 /* LaunchScreen.storyboard in Resources */,
 				BCEE123F256827EA00477E77 /* TagCollectionViewCell.xib in Resources */,
 				BC1D3B56256833840059A369 /* ImageTableViewCell.xib in Resources */,
+				BC2CAAF3256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib in Resources */,
 				BC99CEEA254BD2B500BFB1D9 /* Assets.xcassets in Resources */,
 				BC1D3B61256834A50059A369 /* DescriptionTableViewCell.xib in Resources */,
 				BC99CEE5254BD2B400BFB1D9 /* Main.storyboard in Resources */,
@@ -392,7 +370,7 @@
 				BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */,
 				BC1D3B81256AC7850059A369 /* AniList.swift in Sources */,
 				BC1D3B60256834A50059A369 /* DescriptionTableViewCell.swift in Sources */,
-				BC2991A5255373E900160258 /* AnimeTableViewCell.swift in Sources */,
+				BC2CAAF2256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift in Sources */,
 				BC99CEE8254BD2B400BFB1D9 /* Kuro.xcdatamodeld in Sources */,
 				BCFE441925676C6A00448B36 /* ImageCollectionViewCell.swift in Sources */,
 				BC99CF3E254E4EC100BFB1D9 /* CategoryTableViewController.swift in Sources */,
@@ -412,7 +390,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC99CEF8254BD2B500BFB1D9 /* KuroTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +397,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC99CF03254BD2B500BFB1D9 /* KuroUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
