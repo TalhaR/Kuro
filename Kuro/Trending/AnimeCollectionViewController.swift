@@ -26,7 +26,7 @@ private var postQuery = """
           }
         """
 
-class AnimeViewController: UIViewController {
+class AnimeCollectionViewController: UIViewController {
     var animeList: [AniList] = []
     
     var queryVariables: [String: Any] = [
@@ -58,7 +58,28 @@ class AnimeViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.stretchViewBoundsByAddingConstraints(ofParent: view)
         // for debugging
-//        print(queryVariables)
+        print(queryVariables)
+        
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(self.edit))
+        self.navigationItem.rightBarButtonItem = editButton
+    }
+    
+    @objc func edit() { 
+        let editController = storyboard!.instantiateViewController(withIdentifier: "EditSearchTableViewController") as! EditSearchTableViewController
+        editController.delegate = self
+        present(editController, animated: true, completion: nil)
+        editController.matureContentButton.isSelected = !(queryVariables["isAdult"] as! Bool)
+        
+        switch queryVariables["sort"] as! String {
+        case "TRENDING_DESC":
+            editController.trendingRadioButton.isSelected = true
+        case "POPULARITY_DESC":
+            editController.popularityRadioButton.isSelected = true
+        case "SCORE_DESC":
+            editController.ratingRadioButton.isSelected = true
+        default:
+            print("Error: Invalid sort")
+        }
     }
     
     func apiQuery() {
@@ -94,7 +115,7 @@ class AnimeViewController: UIViewController {
 }
 
 // MARK: - CollectionView Delegate
-extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AnimeCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return animeList.count
     }
@@ -140,5 +161,15 @@ extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
+extension AnimeCollectionViewController: EditSearchTableViewControllerDelegate {
+    func editQuery(isAdult: Bool, sort: String) {
+        queryVariables["isAdult"] = isAdult
+        queryVariables["sort"] = sort
+        animeList.removeAll()
+        apiQuery()
+        print(queryVariables)
     }
 }

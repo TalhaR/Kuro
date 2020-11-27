@@ -16,9 +16,7 @@ public struct AniList: Decodable {
 public struct DetailedAniList : Decodable {
     let genres: [String]
     let averageScore: Int?
-//    let coverImage: [String : URL]
     let episodes: Int?
-//    let id: Int
     let nextAiringEpisode: [String : Int]?
     let rankings: [[String : JsonGeneric?]]
     let season: String?

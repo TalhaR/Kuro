@@ -16,6 +16,7 @@
 		BC2CAAF3256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2CAAF1256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib */; };
 		BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */; };
 		BC5546222550D76500C457A9 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546212550D76500C457A9 /* SearchTableViewController.swift */; };
+		BC641C602570406600EBED42 /* EditSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC641C5F2570406600EBED42 /* EditSearchTableViewController.swift */; };
 		BC99CEDE254BD2B400BFB1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */; };
 		BC99CEE0254BD2B400BFB1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDF254BD2B400BFB1D9 /* SceneDelegate.swift */; };
 		BC99CEE5254BD2B400BFB1D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC99CEE3254BD2B400BFB1D9 /* Main.storyboard */; };
@@ -24,7 +25,7 @@
 		BC99CEED254BD2B500BFB1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC99CEEB254BD2B500BFB1D9 /* LaunchScreen.storyboard */; };
 		BC99CF36254E4CBA00BFB1D9 /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CF35254E4CBA00BFB1D9 /* BrowseTableViewController.swift */; };
 		BC99CF3E254E4EC100BFB1D9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CF3D254E4EC100BFB1D9 /* CategoryTableViewController.swift */; };
-		BCC7F447256778F1009D11DE /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7F446256778F1009D11DE /* AnimeViewController.swift */; };
+		BCC7F447256778F1009D11DE /* AnimeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7F446256778F1009D11DE /* AnimeCollectionViewController.swift */; };
 		BCEE12372568276100477E77 /* TagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE12352568276100477E77 /* TagsTableViewCell.swift */; };
 		BCEE12382568276100477E77 /* TagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEE12362568276100477E77 /* TagsTableViewCell.xib */; };
 		BCEE123E256827EA00477E77 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE123C256827EA00477E77 /* TagCollectionViewCell.swift */; };
@@ -61,6 +62,7 @@
 		BC2CAAF1256E0C8100D20137 /* FavoriteAnimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteAnimeTableViewCell.xib; sourceTree = "<group>"; };
 		BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		BC5546212550D76500C457A9 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		BC641C5F2570406600EBED42 /* EditSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSearchTableViewController.swift; sourceTree = "<group>"; };
 		BC99CEDA254BD2B400BFB1D9 /* Kuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC99CEDF254BD2B400BFB1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +75,7 @@
 		BC99CEFE254BD2B500BFB1D9 /* KuroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC99CF35254E4CBA00BFB1D9 /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewController.swift; sourceTree = "<group>"; };
 		BC99CF3D254E4EC100BFB1D9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		BCC7F446256778F1009D11DE /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
+		BCC7F446256778F1009D11DE /* AnimeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCollectionViewController.swift; sourceTree = "<group>"; };
 		BCEE12352568276100477E77 /* TagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewCell.swift; sourceTree = "<group>"; };
 		BCEE12362568276100477E77 /* TagsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsTableViewCell.xib; sourceTree = "<group>"; };
 		BCEE123C256827EA00477E77 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -206,8 +208,9 @@
 		BC99CF29254E2B5100BFB1D9 /* Trending */ = {
 			isa = PBXGroup;
 			children = (
-				BCC7F446256778F1009D11DE /* AnimeViewController.swift */,
+				BCC7F446256778F1009D11DE /* AnimeCollectionViewController.swift */,
 				BCFE441725676C6A00448B36 /* ImageCollectionViewCell.swift */,
+				BC641C5F2570406600EBED42 /* EditSearchTableViewController.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				BC99CEDE254BD2B400BFB1D9 /* AppDelegate.swift in Sources */,
 				BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */,
 				BC1D3B81256AC7850059A369 /* AniList.swift in Sources */,
+				BC641C602570406600EBED42 /* EditSearchTableViewController.swift in Sources */,
 				BC1D3B60256834A50059A369 /* DescriptionTableViewCell.swift in Sources */,
 				BC2CAAF2256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift in Sources */,
 				BC99CEE8254BD2B400BFB1D9 /* Kuro.xcdatamodeld in Sources */,
@@ -379,7 +383,7 @@
 				BC1D3B55256833840059A369 /* ImageTableViewCell.swift in Sources */,
 				BC5546222550D76500C457A9 /* SearchTableViewController.swift in Sources */,
 				BCFE43FC256763C900448B36 /* AnimeInfoTableViewController.swift in Sources */,
-				BCC7F447256778F1009D11DE /* AnimeViewController.swift in Sources */,
+				BCC7F447256778F1009D11DE /* AnimeCollectionViewController.swift in Sources */,
 				BCEE123E256827EA00477E77 /* TagCollectionViewCell.swift in Sources */,
 				BCEE12372568276100477E77 /* TagsTableViewCell.swift in Sources */,
 				BC99CF36254E4CBA00BFB1D9 /* BrowseTableViewController.swift in Sources */,

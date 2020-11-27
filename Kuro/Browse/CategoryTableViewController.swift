@@ -48,11 +48,7 @@ class CategoryTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+    // MARK: - Table view data source    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
@@ -72,22 +68,22 @@ class CategoryTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BrowseCategory" {
-            let controller = segue.destination as! AnimeViewController
+            let controller = segue.destination as! AnimeCollectionViewController
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.title = categories[indexPath.row]
-                controller.queryVariables.updateValue("POPULARITY_DESC", forKey: "sort")
-                controller.queryVariables.updateValue(100, forKey: "popularity_greater")
+                controller.queryVariables["sort"] = "POPULARITY_DESC"
+                controller.queryVariables["popularity_greater"] = "100"
                 
                 switch title {
                 case "Genre":
-                    controller.queryVariables.updateValue(categories[indexPath.row], forKey: "genre")
+                    controller.queryVariables["genre"] = categories[indexPath.row]
                 case "Season":
                     let seasonArr = categories[indexPath.row].components(separatedBy: " ")
-                    controller.queryVariables.updateValue(seasonArr[0].uppercased(), forKey: "season")
-                    controller.queryVariables.updateValue(seasonArr[1], forKey: "seasonYear")
+                    controller.queryVariables["season"] = seasonArr[0].uppercased()
+                    controller.queryVariables["seasonYear"] = seasonArr[1]
                 case "Year":
-                    controller.queryVariables.updateValue(categories[indexPath.row], forKey: "seasonYear")
+                    controller.queryVariables["seasonYear"] = categories[indexPath.row]
                 default:
                     print("Error: Unexpected issue with segue")
                 }

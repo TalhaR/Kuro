@@ -6,11 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesTableViewController: UITableViewController {
     
+    lazy var fetchedResultsController: NSFetchedResultsController<Anime> = {
+        let fetchRequest = NSFetchRequest<Anime>(entityName: "Anime")
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchRequest.fetchBatchSize = 20
+        
+        let fetchedResultsController = NSFetchedResultsController<Anime>(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var animeList: [Anime]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,102 +33,106 @@ class FavoritesTableViewController: UITableViewController {
         tableView.register(FavoriteAnimeTableViewCell.nib(), forCellReuseIdentifier: FavoriteAnimeTableViewCell.identifier)
     }
     
+    deinit {
+        fetchedResultsController.delegate = nil
+    }
+    
     func fetchAnime() {
         do {
-            self.animeList = try context.fetch(Anime.fetchRequest())
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            try fetchedResultsController.performFetch()
         } catch {
             print("error")
         }
     }
+}
 
+extension FavoritesTableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animeList?.count ?? 0
+        return fetchedResultsController.sections![section].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteAnimeTableViewCell.identifier, for: indexPath) as! FavoriteAnimeTableViewCell
 
-        if let animeList = animeList {
-            let anime = animeList[indexPath.row]
-            cell.animeName.text = anime.name
-            cell.animeImage.image = UIImage(data: anime.image!)
-            cell.animeScore.text = String(anime.score)
-            cell.animeType.text = anime.type
-        }
-
+        let anime = fetchedResultsController.object(at: indexPath)
+        cell.animeName.text = anime.name
+        cell.animeImage.image = UIImage(data: anime.image!)
+        cell.animeScore.text = String(anime.score)
+        cell.animeType.text = anime.type
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let controller = storyboard!.instantiateViewController(withIdentifier: "AnimeInfoTableViewController") as! AnimeInfoTableViewController
-        
-        let anime = animeList![indexPath.row]
+
+        let anime = fetchedResultsController.object(at: indexPath)
         
         controller.title = anime.name
         controller.tmpImg = UIImage(data: anime.image!)
         controller.queryVariables.updateValue(Int(anime.id), forKey: "id")
-        
+
         self.navigationController!.pushViewController(controller, animated: true)
     }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
-            let animeToRemove = self.animeList![indexPath.row]
-            
-            self.context.delete(animeToRemove)
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let animeToDelete = fetchedResultsController.object(at: indexPath)
+            context.delete(animeToDelete)
             
             do {
-                try self.context.save()
+                try context.save()
             } catch {
                 print(error.localizedDescription)
             }
-            
-            self.fetchAnime()
         }
-        
-        return UISwipeActionsConfiguration(actions: [action])
     }
+}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+extension FavoritesTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            print("*** NSFetchedResultsChangeInsert (object)")
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            print("*** NSFetchedResultsChangeDelete (object)")
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .move:
+            print("*** NSFetchedResultsChangeMove (object)")
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .update:
+            print("*** NSFetchedResultsChangeUpdate (object)")
+        @unknown default:
+            fatalError("Unhandled switch case of NSFetchedResultsChangeType")
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            print("*** NSFetchedResultsChangeInsert (section)")
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            print("*** NSFetchedResultsChangeDelete (section)")
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .move:
+            print("*** NSFetchedResultsChangeMove (section)")
+        case .update:
+            print("*** NSFetchedResultsChangeUpdate (section)")
+        @unknown default:
+            fatalError("Unhandled switch case of NSFetchedResultsChangeType")
+        }
     }
-    */
-
 }

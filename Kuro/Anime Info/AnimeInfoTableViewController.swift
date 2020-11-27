@@ -81,7 +81,7 @@ class AnimeInfoTableViewController: UITableViewController {
     @objc func favorite() {
         let symbol: String = savedAnime != nil ? "star" : "star.fill"
         self.navigationItem.rightBarButtonItem!.image = UIImage(systemName: symbol)
-        print("test")
+        print("favorited")
         AudioServicesPlaySystemSound(SystemSoundID(1111)) // 1054 bell / 1111 confirm noise?
         
         if let savedAnime = savedAnime {
@@ -102,6 +102,7 @@ class AnimeInfoTableViewController: UITableViewController {
             if let imageData = tmpImg?.pngData() {
                 anime.image = imageData
             }
+            savedAnime = anime
         }
         
         do {
@@ -144,7 +145,6 @@ class AnimeInfoTableViewController: UITableViewController {
             }
         }.resume()
     }
-
 }
 
 extension AnimeInfoTableViewController {
@@ -201,9 +201,8 @@ extension AnimeInfoTableViewController {
                 if let score = animeInfo.averageScore {
                     imageCell.animeScoreLabel.text = String(score)
                 } else {
-                    imageCell.animeScoreLabel.text = "-1" // make invis for release
+                    imageCell.animeScoreLabel.text = ""
                 }
-                imageCell.animeScoreLabel.backgroundColor = .darkGray
             }
             cell = imageCell
         case 1:
@@ -227,11 +226,4 @@ extension AnimeInfoTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        if indexPath.row == 1 {
-    //            return 44.0
-    //        }
-    //        return UITableView.automaticDimension
-    //    }
 }

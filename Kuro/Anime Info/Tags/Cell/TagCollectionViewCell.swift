@@ -27,7 +27,7 @@ class TagCollectionViewCell: UICollectionViewCell {
 //        genreLabel.layer.cornerRadius = genreLabel.frame.height/1.5
 //        genreLabel.layer.borderWidth = 3
         
-        contentView.backgroundColor = .gray
+        contentView.backgroundColor = .darkGray
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
