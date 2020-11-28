@@ -15,7 +15,6 @@ class FavoritesTableViewController: UITableViewController {
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
         fetchRequest.fetchBatchSize = 20
         
         let fetchedResultsController = NSFetchedResultsController<Anime>(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -59,7 +58,15 @@ extension FavoritesTableViewController {
         cell.animeName.text = anime.name
         cell.animeImage.image = UIImage(data: anime.image!)
         cell.animeScore.text = String(anime.score)
-        cell.animeType.text = anime.type
+        
+        switch anime.type {
+        case "TV_SHORT":
+            cell.animeType.text = "TV Short"
+        case "MOVIE":
+            cell.animeType.text = "Movie"
+        default:
+            cell.animeType.text = anime.type
+        }
         
         return cell
     }

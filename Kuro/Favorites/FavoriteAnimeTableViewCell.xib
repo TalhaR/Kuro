@@ -44,15 +44,16 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="285" id="DCi-9b-8Mk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Tbl-hP-gIb" secondAttribute="bottom" constant="10" id="II8-FH-4sB"/>
-                    <constraint firstItem="4YE-EF-glD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="K1X-dS-une"/>
                     <constraint firstItem="4YE-EF-glD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="P58-r6-daX"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ku2-UL-P2i" secondAttribute="bottom" constant="10" id="XzE-nR-7wl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Tbl-hP-gIb" secondAttribute="trailing" constant="10" id="a2v-FR-XgS"/>
                     <constraint firstItem="j2h-XS-tO6" firstAttribute="leading" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="10" id="aZ5-Ws-acG"/>
+                    <constraint firstAttribute="bottom" secondItem="4YE-EF-glD" secondAttribute="bottom" constant="10" id="dnO-Ol-Oj4"/>
                     <constraint firstAttribute="trailing" secondItem="j2h-XS-tO6" secondAttribute="trailing" constant="10" id="lhS-ei-1d9"/>
                     <constraint firstItem="j2h-XS-tO6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="mDh-y8-l5G"/>
                     <constraint firstAttribute="bottom" secondItem="j2h-XS-tO6" secondAttribute="bottom" constant="100" id="mRs-OL-yjw"/>
                     <constraint firstItem="ku2-UL-P2i" firstAttribute="leading" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="10" id="vYN-3A-bSK"/>
+                    <constraint firstItem="4YE-EF-glD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wbR-AN-77D"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

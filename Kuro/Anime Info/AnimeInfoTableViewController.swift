@@ -125,9 +125,7 @@ class AnimeInfoTableViewController: UITableViewController {
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : [String : Any]]
-//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
                     let show = json["data"]!["Media"]!
-//                    print(show)
                     let jsonData = try JSONSerialization.data(withJSONObject: show, options: .prettyPrinted)
                     self.animeInfo = try JSONDecoder().decode(DetailedAniList.self, from: jsonData)
                     
@@ -189,10 +187,10 @@ extension AnimeInfoTableViewController {
                     imageCell.animeFormatLabel.text = animeInfo.format
                 }
                 
-                if let season = animeInfo.season?.lowercased(), let year = animeInfo.seasonYear {
-                    imageCell.animeSeasonLabel.text = "\(season.capitalized) \(year)"
+                if let season = animeInfo.season, let year = animeInfo.seasonYear {
+                    imageCell.animeSeasonLabel.text = "\(season.lowerAndCapitalize()) \(year)"
                 } else {
-                    imageCell.animeSeasonLabel.text = "No Season \\ Year"
+                    imageCell.animeSeasonLabel.text = ""
                 }
                 
                 imageCell.animeRatingLabel.text = animeInfo.getRank("RATED")

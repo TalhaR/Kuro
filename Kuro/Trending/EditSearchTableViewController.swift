@@ -16,7 +16,6 @@ extension UIButton {
         
         UIView.animate(withDuration: 0.1, delay: 0.05, options: .curveLinear, animations: {
             image.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            
         }) { (success) in
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
                 self.isSelected = !self.isSelected
@@ -70,7 +69,6 @@ class EditSearchTableViewController: UITableViewController {
         }
         
         delegate.editQuery(isAdult: !matureContentButton.isSelected, sort: sort)
-        //TRENDING_DESC
         dismiss(animated: true, completion: nil)
     }
     

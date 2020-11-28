@@ -56,6 +56,7 @@ public struct DetailedAniList : Decodable {
     }
 }
 
+/// Used to handle 'Any' datatype for JSON Decoder class
 public enum JsonGeneric: Decodable {
     case int(Int), string(String), bool(Bool)
     
@@ -102,5 +103,12 @@ public enum JsonGeneric: Decodable {
 
     enum JsonGeneric:Error {
         case missingValue
+    }
+}
+
+extension String {
+    /// Lowercases all characters and capitalizes first character in String
+    func lowerAndCapitalize() -> String {
+        return self.lowercased().capitalized
     }
 }
