@@ -53,7 +53,7 @@
                     <constraint firstItem="j2h-XS-tO6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="mDh-y8-l5G"/>
                     <constraint firstAttribute="bottom" secondItem="j2h-XS-tO6" secondAttribute="bottom" constant="100" id="mRs-OL-yjw"/>
                     <constraint firstItem="ku2-UL-P2i" firstAttribute="leading" secondItem="4YE-EF-glD" secondAttribute="trailing" constant="10" id="vYN-3A-bSK"/>
-                    <constraint firstItem="4YE-EF-glD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wbR-AN-77D"/>
+                    <constraint firstItem="4YE-EF-glD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wbR-AN-77D"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
