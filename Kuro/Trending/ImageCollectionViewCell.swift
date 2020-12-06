@@ -25,7 +25,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
         
         imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
         imageView.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, constant: 0).isActive = true
     }
     

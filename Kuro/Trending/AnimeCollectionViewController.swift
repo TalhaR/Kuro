@@ -25,6 +25,12 @@ private var postQuery = """
               }
           }
         """
+/*
+ uirefreshcontrol -> for refresh
+ scrollviewdidload -> to add at the bottom
+ try adding a timer delay on the search
+ 
+*/
 
 class AnimeCollectionViewController: UIViewController {
     var animeList: [AniList] = []
@@ -57,11 +63,11 @@ class AnimeCollectionViewController: UIViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.stretchViewBoundsByAddingConstraints(ofParent: view)
-        // for debugging
-        print(queryVariables)
         
         let editButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(self.edit))
         self.navigationItem.rightBarButtonItem = editButton
+        
+        AppStore.reviewIfApplicable()
     }
     
     @objc func edit() { 

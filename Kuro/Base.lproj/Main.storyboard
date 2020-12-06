@@ -95,7 +95,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeG-pH-viZ">
                                                     <rect key="frame" x="20.000000000000007" y="10" width="117.66666666666669" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="  Popularity" image="circle" catalog="system"/>
+                                                    <state key="normal" title="  Popularity" image="circle" catalog="system">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
                                                     <state key="selected" image="largecircle.fill.circle" catalog="system"/>
                                                     <connections>
                                                         <action selector="pick:" destination="A6i-0C-wL5" eventType="touchDown" id="pMs-JI-RM9"/>
@@ -119,7 +121,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYU-js-PLS">
                                                     <rect key="frame" x="20" y="10" width="85.666666666666671" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="  Rating" image="circle" catalog="system"/>
+                                                    <state key="normal" title="  Rating" image="circle" catalog="system">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
                                                     <state key="selected" image="largecircle.fill.circle" catalog="system"/>
                                                     <connections>
                                                         <action selector="pick:" destination="A6i-0C-wL5" eventType="touchDown" id="MTH-Fc-ic4"/>
@@ -143,7 +147,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-lG-Sr6">
                                                     <rect key="frame" x="20.000000000000007" y="10" width="106.66666666666669" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="  Trending" image="circle" catalog="system"/>
+                                                    <state key="normal" title="  Trending" image="circle" catalog="system">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
                                                     <state key="selected" image="largecircle.fill.circle" catalog="system"/>
                                                     <connections>
                                                         <action selector="pick:" destination="A6i-0C-wL5" eventType="touchDown" id="WDY-hR-SgM"/>
@@ -446,6 +452,9 @@
         <image name="flame.fill" catalog="system" width="108" height="128"/>
         <image name="largecircle.fill.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

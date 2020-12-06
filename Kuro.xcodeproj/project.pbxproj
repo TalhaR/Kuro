@@ -17,6 +17,7 @@
 		BC5546182550D6C100C457A9 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */; };
 		BC5546222550D76500C457A9 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5546212550D76500C457A9 /* SearchTableViewController.swift */; };
 		BC641C602570406600EBED42 /* EditSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC641C5F2570406600EBED42 /* EditSearchTableViewController.swift */; };
+		BC8F7AA9257D53ED00B5E1DF /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8F7AA8257D53ED00B5E1DF /* AppStore.swift */; };
 		BC99CEDE254BD2B400BFB1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */; };
 		BC99CEE0254BD2B400BFB1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99CEDF254BD2B400BFB1D9 /* SceneDelegate.swift */; };
 		BC99CEE5254BD2B400BFB1D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC99CEE3254BD2B400BFB1D9 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		BC5546172550D6C100C457A9 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		BC5546212550D76500C457A9 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		BC641C5F2570406600EBED42 /* EditSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSearchTableViewController.swift; sourceTree = "<group>"; };
+		BC8F7AA8257D53ED00B5E1DF /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BC99CEDA254BD2B400BFB1D9 /* Kuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC99CEDD254BD2B400BFB1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC99CEDF254BD2B400BFB1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				BC99CEE3254BD2B400BFB1D9 /* Main.storyboard */,
 				BC1D3B80256AC7850059A369 /* AniList.swift */,
 				BCFE440C2567695400448B36 /* UIViewHelper.swift */,
+				BC8F7AA8257D53ED00B5E1DF /* AppStore.swift */,
 				BC99CF29254E2B5100BFB1D9 /* Trending */,
 				BC0E0589256583C100473D73 /* Anime Info */,
 				BC55461F2550D6D900C457A9 /* Browse */,
@@ -376,6 +379,7 @@
 				BC1D3B60256834A50059A369 /* DescriptionTableViewCell.swift in Sources */,
 				BC2CAAF2256E0C8100D20137 /* FavoriteAnimeTableViewCell.swift in Sources */,
 				BC99CEE8254BD2B400BFB1D9 /* Kuro.xcdatamodeld in Sources */,
+				BC8F7AA9257D53ED00B5E1DF /* AppStore.swift in Sources */,
 				BCFE441925676C6A00448B36 /* ImageCollectionViewCell.swift in Sources */,
 				BC99CF3E254E4EC100BFB1D9 /* CategoryTableViewController.swift in Sources */,
 				BCFE440D2567695400448B36 /* UIViewHelper.swift in Sources */,
