@@ -29,7 +29,6 @@ private var postQuery = """
  uirefreshcontrol -> for refresh
  scrollviewdidload -> to add at the bottom
  try adding a timer delay on the search
- 
 */
 
 class AnimeCollectionViewController: UIViewController {
@@ -43,6 +42,13 @@ class AnimeCollectionViewController: UIViewController {
         "isAdult": false,
         "popularity_greater": 10000
     ]
+    
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -59,18 +65,26 @@ class AnimeCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         apiQuery()
+    
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.addSubview(refreshControl)
         view.addSubview(collectionView)
         collectionView.stretchViewBoundsByAddingConstraints(ofParent: view)
         
         let editButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(self.edit))
         self.navigationItem.rightBarButtonItem = editButton
-        
+
         AppStore.reviewIfApplicable()
     }
     
-    @objc func edit() { 
+    @objc private func refresh() {
+        print("attempting refresh")
+        animeList.removeAll()
+        apiQuery()
+    }
+    
+    @objc private func edit() {
         let editController = storyboard!.instantiateViewController(withIdentifier: "EditSearchTableViewController") as! EditSearchTableViewController
         editController.delegate = self
         present(editController, animated: true, completion: nil)
@@ -110,6 +124,7 @@ class AnimeCollectionViewController: UIViewController {
 
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
+                        self.refreshControl.endRefreshing()
                     }
                 } catch {
                     print("54: \(error)")

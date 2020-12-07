@@ -26,6 +26,7 @@ class ImageTableViewCell: UITableViewCell {
     
     public func configure(with image: UIImage) {
         animeImage.image = image
+        print(animeImage.frame.width)
     }
     
     override func awakeFromNib() {

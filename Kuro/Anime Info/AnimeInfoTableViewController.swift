@@ -76,6 +76,7 @@ class AnimeInfoTableViewController: UITableViewController {
         tableView.register(ImageTableViewCell.nib(), forCellReuseIdentifier: ImageTableViewCell.identifier)
         tableView.register(TagsTableViewCell.nib(), forCellReuseIdentifier: TagsTableViewCell.identifier)
         tableView.register(DescriptionTableViewCell.nib(), forCellReuseIdentifier: DescriptionTableViewCell.identifier)
+        tableView.allowsSelection = false
     }
     
     @objc func favorite() {

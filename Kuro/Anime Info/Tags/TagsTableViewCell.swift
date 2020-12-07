@@ -16,7 +16,7 @@ class TagsTableViewCell: UITableViewCell {
     }
     
     let collectionView: UICollectionView = {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.50), heightDimension: .fractionalHeight(1.0))
 
         let item = NSCollectionLayoutItem(layoutSize: size)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 2.5, bottom: 0, trailing: 2.5)
@@ -24,7 +24,6 @@ class TagsTableViewCell: UITableViewCell {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
 
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .horizontal
@@ -34,6 +33,8 @@ class TagsTableViewCell: UITableViewCell {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         collectionView.register(TagCollectionViewCell.nib(), forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         
         return collectionView
     }()
