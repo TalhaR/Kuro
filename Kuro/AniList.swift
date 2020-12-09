@@ -7,12 +7,14 @@
 
 import Foundation
 
+/// Holds basic info including ID, Title & coverImage
 public struct AniList: Decodable {
     let id: Int
     let title: [String : String?]
     let coverImage: [String : URL]
 }
 
+/// Used for Detailed Information about an Anime
 public struct DetailedAniList : Decodable {
     let genres: [String]
     let averageScore: Int?
@@ -26,7 +28,7 @@ public struct DetailedAniList : Decodable {
     let status: String
     let format: String
     
-    // type: "RATED" or "POPULAR"
+    /// - Parameter type: "RATED" or "POPULAR"
     func getRank(_ type: String) -> String? {
         var season: String?
         var year = 0, rank = 0

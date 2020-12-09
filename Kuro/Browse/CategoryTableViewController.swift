@@ -32,6 +32,8 @@ class CategoryTableViewController: UITableViewController {
         }
     }
     
+    // https://www.youtube.com/watch?v=FpTY04efWC0
+    // uiview animation modelled after this video
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -74,6 +76,7 @@ class CategoryTableViewController: UITableViewController {
                 controller.title = categories[indexPath.row]
                 controller.queryVariables["sort"] = "POPULARITY_DESC"
                 controller.queryVariables["popularity_greater"] = "100"
+                controller.resetPage()
                 
                 switch title {
                 case "Genre":

@@ -8,6 +8,7 @@
 import UIKit
 
 private let cellSize = CGSize(width: 190, height: 285)
+private var pageNumber: Int = 1
 
 private var postQuery = """
         query ($id: Int, $page: Int, $perPage: Int, $sort: [MediaSort], $genre: String, $type: MediaType, $season: MediaSeason, $seasonYear: Int, $isAdult: Boolean, $popularity_greater: Int) {
@@ -25,17 +26,18 @@ private var postQuery = """
               }
           }
         """
-/*
- uirefreshcontrol -> for refresh
- scrollviewdidload -> to add at the bottom
- try adding a timer delay on the search
-*/
 
 class AnimeCollectionViewController: UIViewController {
+    /// List of Anime to be displayed
     var animeList: [AniList] = []
+    /// Set of IDs to insure no duplicate Anime displayed
+    var animeSet: Set = Set<Int>()
+    var isLoading: Bool = false
+    /// false if apiQuery can return no more data
+    var canLoadMore: Bool = true
     
     var queryVariables: [String: Any] = [
-        "page": 1,
+        "page": pageNumber,
         "perPage": 50,
         "type": "ANIME",
         "sort": "TRENDING_DESC",
@@ -68,7 +70,8 @@ class AnimeCollectionViewController: UIViewController {
     
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.addSubview(refreshControl)
+        // TODO: Fix Issue with Refresh Control & ScrollViewDidLoad
+//        collectionView.addSubview(refreshControl)
         view.addSubview(collectionView)
         collectionView.stretchViewBoundsByAddingConstraints(ofParent: view)
         
@@ -78,9 +81,29 @@ class AnimeCollectionViewController: UIViewController {
         AppStore.reviewIfApplicable()
     }
     
+    // https://johncodeos.com/how-to-add-load-more-infinite-scrolling-in-ios-using-swift/
+    // infinite scroll logic taken from here
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoading && canLoadMore {
+            loadMoreAnime()
+        }
+    }
+    
+    func loadMoreAnime() {
+        if !isLoading {
+            isLoading = true
+            pageNumber += 1
+            queryVariables["page"] = pageNumber
+            apiQuery()
+        }
+    }
+    
     @objc private func refresh() {
-        print("attempting refresh")
         animeList.removeAll()
+        resetPage()
         apiQuery()
     }
     
@@ -88,7 +111,9 @@ class AnimeCollectionViewController: UIViewController {
         let editController = storyboard!.instantiateViewController(withIdentifier: "EditSearchTableViewController") as! EditSearchTableViewController
         editController.delegate = self
         present(editController, animated: true, completion: nil)
-        editController.matureContentButton.isSelected = !(queryVariables["isAdult"] as! Bool)
+        
+        let isAdult: Bool = queryVariables["isAdult"] as? Bool ?? true
+        editController.matureContentButton.isSelected = !(isAdult)
         
         switch queryVariables["sort"] as! String {
         case "TRENDING_DESC":
@@ -102,8 +127,11 @@ class AnimeCollectionViewController: UIViewController {
         }
     }
     
+    /// Requests from https://graphql.anilist.co to provide some list of anime matching the queryVariables criteria.
+    /// Adds Anime to animeList & corresponding IDs to animeSet
     func apiQuery() {
         let parameterDic: [String : Any] = ["query" : postQuery, "variables" : queryVariables]
+//        print(queryVariables) for debugging
 
         let url = URL(string: "https://graphql.anilist.co")
         var request = URLRequest(url: url!)
@@ -116,15 +144,24 @@ class AnimeCollectionViewController: UIViewController {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: [String: [String: Array<Any>]]]
                     
+                    if json["data"]!["Page"]!["media"]!.count == 0 {
+                        self.canLoadMore = false
+                    }
+                    
                     for show in json["data"]!["Page"]!["media"]! {
                         let jsonData = try JSONSerialization.data(withJSONObject: show, options: .prettyPrinted)
                         let anime_info: AniList = try! JSONDecoder().decode(AniList.self, from: jsonData)
-                        self.animeList.append(anime_info)
+                        // checks if show already exists in list
+                        if (!self.animeSet.contains(anime_info.id)) {
+                            self.animeList.append(anime_info)
+                            self.animeSet.insert(anime_info.id)
+                        }
                     }
 
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
-                        self.refreshControl.endRefreshing()
+                        self.isLoading = false
+//                        self.refreshControl.endRefreshing()
                     }
                 } catch {
                     print("54: \(error)")
@@ -133,6 +170,13 @@ class AnimeCollectionViewController: UIViewController {
         }.resume()
     }
 
+    /// resets variables to allow for new apiQuery
+    public func resetPage() {
+        pageNumber = 1
+        queryVariables["page"] = pageNumber
+        animeSet.removeAll()
+        canLoadMore = true
+    }
 }
 
 // MARK: - CollectionView Delegate
@@ -146,13 +190,10 @@ extension AnimeCollectionViewController: UICollectionViewDelegate, UICollectionV
         
         if (!animeList.isEmpty) {
             let animeInfo = animeList[indexPath.row]
-            cell.tag = animeInfo.id
             
             let data = try! Data(contentsOf: animeInfo.coverImage["large"]!)
             let img = UIImage(data: data)
             cell.imageView.image = img
-        } else {
-            cell.imageView.image = UIImage(named: "image_icon")
         }
         
         return cell
@@ -171,7 +212,7 @@ extension AnimeCollectionViewController: UICollectionViewDelegate, UICollectionV
 
         let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
         controller.tmpImg = cell.imageView.image
-        controller.queryVariables.updateValue(cell.tag, forKey: "id")
+        controller.queryVariables["id"] = animeList[indexPath.row].id
         
         self.navigationController!.pushViewController(controller, animated: true)
     }
@@ -186,11 +227,19 @@ extension AnimeCollectionViewController: UICollectionViewDelegate, UICollectionV
 }
 
 extension AnimeCollectionViewController: EditSearchTableViewControllerDelegate {
+    /// Updates isAdult & sort keys in queryVariables with given parameters
+    /// - Parameter isAdult: False to filter Mature Content else True
+    /// - Parameter sort: "TRENDING_DESC", "POPULARITY_DESC" or "RATING_DESC"
     func editQuery(isAdult: Bool, sort: String) {
-        queryVariables["isAdult"] = isAdult
+        if isAdult {
+            queryVariables.removeValue(forKey: "isAdult")
+        } else {
+            queryVariables["isAdult"] = false
+        }
         queryVariables["sort"] = sort
+        resetPage()
         animeList.removeAll()
         apiQuery()
-        print(queryVariables)
+        collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }

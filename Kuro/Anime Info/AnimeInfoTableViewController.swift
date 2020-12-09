@@ -82,7 +82,6 @@ class AnimeInfoTableViewController: UITableViewController {
     @objc func favorite() {
         let symbol: String = savedAnime != nil ? "star" : "star.fill"
         self.navigationItem.rightBarButtonItem!.image = UIImage(systemName: symbol)
-        print("favorited")
         AudioServicesPlaySystemSound(SystemSoundID(1111)) // 1054 bell / 1111 confirm noise?
         
         if let savedAnime = savedAnime {
@@ -164,6 +163,12 @@ extension AnimeInfoTableViewController {
                 case "RELEASING":
                     imageCell.animeAiringStatusLabel.text = "Airing"
                     
+                    // This is for edge cases for Anime that aren't properly updated
+                    if animeInfo.nextAiringEpisode == nil {
+                        imageCell.animeEpisodeLabel.text = "? / ?"
+                        break
+                    }
+                    
                     let nextEpisode = animeInfo.nextAiringEpisode!
                     if let totalEpisodes = animeInfo.episodes {
                         imageCell.animeEpisodeLabel.text = "\(nextEpisode["episode"]! - 1) / \(totalEpisodes)"
@@ -220,9 +225,5 @@ extension AnimeInfoTableViewController {
             cell = nil
         }
         return cell ?? UITableViewCell()
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

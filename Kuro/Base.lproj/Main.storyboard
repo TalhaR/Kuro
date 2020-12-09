@@ -110,7 +110,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YeG-pH-viZ" firstAttribute="centerY" secondItem="Jz0-YJ-fBj" secondAttribute="centerY" id="U3C-Ys-krd"/>
-                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="YeG-pH-viZ" secondAttribute="trailing" constant="284" id="gg1-Ef-win"/>
                                                 <constraint firstItem="YeG-pH-viZ" firstAttribute="leading" secondItem="Jz0-YJ-fBj" secondAttribute="leading" constant="20" symbolic="YES" id="q7y-ci-VKe"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -136,7 +135,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QYU-js-PLS" firstAttribute="centerY" secondItem="lay-3S-lt5" secondAttribute="centerY" id="62I-O8-7FT"/>
-                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QYU-js-PLS" secondAttribute="trailing" constant="310" id="Ahg-qi-6jI"/>
                                                 <constraint firstItem="QYU-js-PLS" firstAttribute="leading" secondItem="lay-3S-lt5" secondAttribute="leading" constant="20" symbolic="YES" id="US2-tX-HSE"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -161,7 +159,6 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="bIB-lG-Sr6" secondAttribute="trailing" constant="294" id="aWP-R4-L3A"/>
                                                 <constraint firstItem="bIB-lG-Sr6" firstAttribute="leading" secondItem="5J1-V2-AJi" secondAttribute="leading" constant="20" symbolic="YES" id="ecQ-gA-vAW"/>
                                                 <constraint firstItem="bIB-lG-Sr6" firstAttribute="centerY" secondItem="5J1-V2-AJi" secondAttribute="centerY" id="yDi-pd-Y6S"/>
                                             </constraints>

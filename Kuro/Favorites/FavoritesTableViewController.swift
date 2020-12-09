@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+// Most Logic modelled after / taken from iOS Apprentice Chapter 32
 class FavoritesTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Anime> = {

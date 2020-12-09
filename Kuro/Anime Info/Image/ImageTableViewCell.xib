@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eu-BP-KHw">
-                        <rect key="frame" x="248.5" y="10" width="29.5" height="16.5"/>
+                        <rect key="frame" x="248.66666666666666" y="10.000000000000002" width="29.333333333333343" height="16.666666666666671"/>
                         <attributedString key="attributedText">
                             <fragment content="Type">
                                 <attributes>
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YS-EG-0IG">
-                        <rect key="frame" x="323.5" y="10" width="40.5" height="16.5"/>
+                        <rect key="frame" x="323.33333333333331" y="10.000000000000002" width="40.333333333333314" height="16.666666666666671"/>
                         <attributedString key="attributedText">
                             <fragment content="Status">
                                 <attributes>
@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBy-Cz-i9i">
-                        <rect key="frame" x="248.5" y="63" width="47" height="16.5"/>
+                        <rect key="frame" x="248.66666666666663" y="63.333333333333336" width="47" height="16.666666666666664"/>
                         <attributedString key="attributedText">
                             <fragment content="Season">
                                 <attributes>
@@ -63,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63a-7M-hOr">
-                        <rect key="frame" x="248.5" y="118" width="58" height="16.5"/>
+                        <rect key="frame" x="248.66666666666663" y="118.33333333333333" width="58" height="16.666666666666671"/>
                         <attributedString key="attributedText">
                             <fragment content="Episodes">
                                 <attributes>
@@ -76,7 +76,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-jY-yT6">
-                        <rect key="frame" x="248.5" y="173" width="32.5" height="16.5"/>
+                        <rect key="frame" x="248.66666666666666" y="173.66666666666666" width="32.333333333333343" height="16.666666666666657"/>
                         <attributedString key="attributedText">
                             <fragment content="Rank">
                                 <attributes>
@@ -89,7 +89,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iz-cI-QaF">
-                        <rect key="frame" x="248.5" y="227" width="63" height="17"/>
+                        <rect key="frame" x="248.66666666666663" y="227.66666666666666" width="63" height="17"/>
                         <attributedString key="attributedText">
                             <fragment content="Popularity">
                                 <attributes>
@@ -102,13 +102,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="TV Short" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLL-26-eSZ">
-                        <rect key="frame" x="248.5" y="31.5" width="62.5" height="19"/>
+                        <rect key="frame" x="248.66666666666666" y="31.666666666666671" width="62.333333333333343" height="19"/>
                         <fontDescription key="fontDescription" name="ComicSansMS" family="Comic Sans MS" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6u-cd-wDD">
-                        <rect key="frame" x="248.5" y="84.5" width="10.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6u-cd-wDD">
+                        <rect key="frame" x="248.66666666666663" y="85" width="136.33333333333337" height="21"/>
                         <attributedString key="attributedText">
                             <fragment content="?">
                                 <attributes>
@@ -118,8 +118,8 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wut-F5-5F7">
-                        <rect key="frame" x="248.5" y="139.5" width="36.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wut-F5-5F7">
+                        <rect key="frame" x="248.66666666666663" y="140" width="136.33333333333337" height="21"/>
                         <attributedString key="attributedText">
                             <fragment content="? / ?">
                                 <attributes>
@@ -130,7 +130,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imC-A8-kS7">
-                        <rect key="frame" x="323.5" y="31.5" width="81.5" height="19"/>
+                        <rect key="frame" x="323.66666666666669" y="31.666666666666671" width="81.333333333333314" height="19"/>
                         <attributedString key="attributedText">
                             <fragment content="Unreleased">
                                 <attributes>
@@ -141,8 +141,8 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9l7-9O-2DB">
-                        <rect key="frame" x="248.5" y="194.5" width="7" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9l7-9O-2DB">
+                        <rect key="frame" x="248.66666666666663" y="195.33333333333334" width="136.33333333333337" height="20"/>
                         <attributedString key="attributedText">
                             <fragment content="-">
                                 <attributes>
@@ -153,10 +153,10 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIH-2r-eGn">
-                        <rect key="frame" x="248.5" y="249" width="7" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIH-2r-eGn">
+                        <rect key="frame" x="248.66666666666663" y="249.66666666666663" width="136.33333333333337" height="20"/>
                         <attributedString key="attributedText">
-                            <fragment content="-">
+                            <fragment content="#200 Summer 2020">
                                 <attributes>
                                     <font key="NSFont" size="17" name="ComicSansMS"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -165,13 +165,13 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afC-vR-hsk">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="afC-vR-hsk">
                         <rect key="frame" x="301" y="309" width="79" height="33"/>
                         <attributedString key="attributedText">
                             <fragment content="99">
                                 <attributes>
                                     <font key="NSFont" size="28" name="ComicSansMS"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -180,6 +180,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="afC-vR-hsk" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="60" id="134-PR-Nc5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="9l7-9O-2DB" secondAttribute="trailing" constant="5" id="21a-8X-zlH"/>
                     <constraint firstItem="zLL-26-eSZ" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="2AC-TL-Rpa"/>
                     <constraint firstItem="OBy-Cz-i9i" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="4OG-ch-uqT"/>
                     <constraint firstItem="2IF-jY-yT6" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="4Oq-mL-HsJ"/>
@@ -191,6 +192,7 @@
                     <constraint firstItem="0YS-EG-0IG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ARd-Bu-ztU"/>
                     <constraint firstItem="4iz-cI-QaF" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="DOG-bC-F6s"/>
                     <constraint firstAttribute="trailing" secondItem="imC-A8-kS7" secondAttribute="trailing" constant="5" id="E3g-cT-4X8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="wut-F5-5F7" secondAttribute="trailing" constant="5" id="Fn1-Pj-7TJ"/>
                     <constraint firstItem="aIH-2r-eGn" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="HQm-sN-8GO"/>
                     <constraint firstItem="wut-F5-5F7" firstAttribute="top" secondItem="63a-7M-hOr" secondAttribute="bottom" constant="5" id="KZY-4X-4uI"/>
                     <constraint firstItem="9l7-9O-2DB" firstAttribute="top" secondItem="2IF-jY-yT6" secondAttribute="bottom" constant="5" id="Ovw-Ob-Muf"/>
@@ -205,8 +207,10 @@
                     <constraint firstItem="9l7-9O-2DB" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="jhb-0a-Ts9"/>
                     <constraint firstItem="aIH-2r-eGn" firstAttribute="top" secondItem="4iz-cI-QaF" secondAttribute="bottom" constant="5" id="p6v-zN-Pgu"/>
                     <constraint firstItem="zLL-26-eSZ" firstAttribute="top" secondItem="4eu-BP-KHw" secondAttribute="bottom" constant="5" id="pMi-UN-Ez0"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="H6u-cd-wDD" secondAttribute="trailing" constant="5" id="s7J-ru-2DR"/>
                     <constraint firstAttribute="bottomMargin" secondItem="afC-vR-hsk" secondAttribute="bottom" constant="15" id="sB4-Ci-Lbg"/>
                     <constraint firstItem="63a-7M-hOr" firstAttribute="leading" secondItem="gNA-Co-tEf" secondAttribute="trailing" constant="7.5" id="t2H-jY-ebE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aIH-2r-eGn" secondAttribute="trailing" constant="5" id="tX3-NX-p0U"/>
                     <constraint firstAttribute="bottom" secondItem="gNA-Co-tEf" secondAttribute="bottom" constant="10" id="uxe-DX-hpQ"/>
                     <constraint firstItem="H6u-cd-wDD" firstAttribute="top" secondItem="OBy-Cz-i9i" secondAttribute="bottom" constant="5" id="xvP-cW-Od5"/>
                     <constraint firstItem="2IF-jY-yT6" firstAttribute="top" secondItem="wut-F5-5F7" secondAttribute="bottom" constant="12.5" id="zlx-hn-HiT"/>

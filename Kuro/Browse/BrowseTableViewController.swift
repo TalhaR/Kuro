@@ -12,9 +12,10 @@ class BrowseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        overrideUserInterfaceStyle = .dark
     }
     
+    // https://www.youtube.com/watch?v=FpTY04efWC0
+    // uiview animation similar to this video
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -64,6 +65,8 @@ class BrowseTableViewController: UITableViewController {
             } else {
                 tmpController.queryVariables["sort"] = "SCORE_DESC"
             }
+            
+            tmpController.resetPage()
             controller = tmpController
         default:
             print("Error: Unexpected Cell selected")

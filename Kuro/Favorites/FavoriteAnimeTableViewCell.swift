@@ -20,16 +20,6 @@ class FavoriteAnimeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // Initialization code
-//        animeImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
-        
-//        animeImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-//        animeImage.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 10).isActive = true
-//        animeImage.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 10).isActive = true
-
-//        animeImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

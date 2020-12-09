@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 
+/// Responsible for handling AppStore review
 struct AppStore {
     static let Defaults = UserDefaults.standard
     
@@ -20,6 +21,7 @@ struct AppStore {
         Defaults.set(launchCount, forKey: "launchCount")
     }
     
+    /// Requests a review from user if app was launched 10, 50 or 100 times
     static func reviewIfApplicable() {
         switch Defaults.integer(forKey: "launchCount") {
         case 10, 50, 100:

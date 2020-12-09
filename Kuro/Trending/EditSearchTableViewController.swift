@@ -22,7 +22,6 @@ extension UIButton {
                 image.transform = .identity
             }, completion: nil)
         }
-        
     }
 }
 
@@ -38,12 +37,10 @@ class EditSearchTableViewController: UITableViewController {
     @IBOutlet weak var popularityRadioButton: UIButton!
     @IBOutlet weak var ratingRadioButton: UIButton!
     @IBOutlet weak var trendingRadioButton: UIButton!
-    
     var radioButtons: [UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         radioButtons = [popularityRadioButton, ratingRadioButton, trendingRadioButton]
     }
     
@@ -78,6 +75,7 @@ class EditSearchTableViewController: UITableViewController {
     
     @IBAction func pick(_ sender: UIButton) {
         sender.isSelected = true
+        // deselects other radio Buttons
         for button in radioButtons where button != sender {
             button.isSelected = false
         }
