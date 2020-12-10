@@ -7,7 +7,6 @@
 
 import UIKit
 
-private let cellSize = CGSize(width: 190, height: 285)
 private var pageNumber: Int = 1
 
 private var postQuery = """
@@ -54,8 +53,6 @@ class AnimeCollectionViewController: UIViewController {
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = cellSize
-        
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .darkGray
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -131,7 +128,6 @@ class AnimeCollectionViewController: UIViewController {
     /// Adds Anime to animeList & corresponding IDs to animeSet
     func apiQuery() {
         let parameterDic: [String : Any] = ["query" : postQuery, "variables" : queryVariables]
-//        print(queryVariables) for debugging
 
         let url = URL(string: "https://graphql.anilist.co")
         var request = URLRequest(url: url!)
@@ -218,11 +214,12 @@ extension AnimeCollectionViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cellSize
+        let width = collectionView.frame.size.width / 2 - 12.5
+        return CGSize(width: width, height: 275)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 5, left: 7.5, bottom: 7.5, right: 7.5)
     }
 }
 
