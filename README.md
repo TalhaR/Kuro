@@ -9,5 +9,5 @@ iOS Application for Finding & Tracking Japanese Animation Media.
 - iOS 14+
 - XCode 12+
 
-# Quick Demo
+# Demo
 ![Kuro](trending.gif)
